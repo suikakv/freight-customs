@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.prprv.customs.mapper.CustomerMapper">
+    <!--select查询语句-->
+    <select id="getAll" resultType="com.prprv.customs.entity.Customer">
+        select * from customer;
+    </select>
+    <!--select模糊查询-->
+    <select id="getById" parameterType="customer">
+        select * from customer where id = #{id}
+    </select>
+
+    <!--insert新增语句-->
+    <insert id="save" parameterType="customer">
+        insert into customer values(
+                                        #{id},
+                                        #{name},
+                                        #{contact}
+                                    );
+    </insert>
+
+    <!--update修改语句-->
+    <update id="updateById" parameterType="customer">
+        update customer set name=#{name} where id = #{id}
+    </update>
+
+    <!--delete删除语句-->
+    <delete id="removeById" parameterType="customer">
+        delete from customer where id = #{id}
+    </delete>
+</mapper>
